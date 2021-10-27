@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closures</title>
+</head>
+<body>
+    <h1>Closures</h1>
+    <hr>
+    <h3>go to the console</h3>
+    <script>
+        //Closures 
+
+        //IIFE (Inmediative invoque function expression)
+        (
+            function(){
+                let color = 'green';
+
+                const printColor = () => {
+                    console.log(color);
+                };
+
+                printColor();
+            }
+        )();
+
+        //Funciones que retornan funciones
+        function makeColorPrinter(color){
+            let message = `The color is ${color}`;
+
+            return function(){
+                console.log(message);
+            }
+        }
+        const greenPrinter = makeColorPrinter('green');
+
+        //Variables privadas
+        class Counter{
+            #count;
+            constructor(count){
+                this.#count = count;
+            }
+
+            getCount(){
+                return this.#count;
+            }
+        }
+
+        const count = new Counter(3);
+
+        console.log(count.getCount());
+    </script>
+</body>
+</html>
